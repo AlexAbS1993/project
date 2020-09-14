@@ -10,7 +10,7 @@ const Profile = (props) => {
         <div className={classes.profile}>
             <div className={classes.profileInner}>
                 <Head />
-                <Infoprofile prII={props.prI} />
+                <Infoprofile prII={props.prI} addPost={props.addPost} />
             </div>
         </div>
     )

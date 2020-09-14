@@ -1,3 +1,5 @@
+import reRenderAll from './../render';
+
 let state = {
     profilePage: {
         postsReady: [
@@ -36,5 +38,14 @@ let state = {
         ],
     },
 }
+
+export let addPost = (message) => {
+    let newPost = {
+        inner: message,
+        id: state.profilePage.postsReady.length + 1,
+    };
+    state.profilePage.postsReady.unshift(newPost);
+    reRenderAll(state)
+};
 
 export default state;

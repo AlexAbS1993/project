@@ -1,0 +1,14 @@
+.chat {
+    height: 100px;    
+    background-color: rgb(56, 156, 202, 0.5);
+    border-radius: 10px;
+    border: 1px whitesmoke dotted;
+    text-align: center;
+    width: 80%;
+    margin-left: 10%;
+}
+.nav {
+    margin-top: 12%;
+    margin-right: 5px;
+        text-decoration: none;
+}

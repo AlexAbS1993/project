@@ -1,0 +1,19 @@
+.info {
+    text-align: center;
+    width: 100%;
+}
+.posts {
+    width: 100%;
+}
+.enter {
+    margin-left: calc(50% - 200px);
+    width: 400px;
+    height: 200px;
+}
+
+button {
+    margin-top: 10px;
+    width: 100px;
+    margin-left: calc(50% - 50px);
+}
+

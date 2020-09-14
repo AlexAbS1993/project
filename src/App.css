@@ -1,0 +1,17 @@
+.App {
+  background-color: lightblue;
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+  margin-top:10px;
+  border-radius: 10px;
+}
+@media screen and (max-width: 1250px){
+  .App{
+ grid-template-columns: 4fr 8fr;}
+}
+
+.osnova {
+  grid-row: 2/5;
+}
+
+

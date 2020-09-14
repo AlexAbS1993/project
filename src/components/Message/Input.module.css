@@ -1,0 +1,10 @@
+.enter {
+    height: 100px;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.input {
+    resize: none;
+    width: calc(100% - 6px);
+    height: 100%;
+}

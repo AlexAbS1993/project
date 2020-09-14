@@ -1,0 +1,21 @@
+.thispost {
+    height: 50px;
+    background-color: ivory;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 20px;
+    border: rgba(143, 197, 233, 0.473) 4px solid;
+    box-shadow: 0 0 10px rgb(90, 75, 73);
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+}
+
+.thispost span {
+    line-height: 50px;
+    padding-left: 15px;
+}
+.image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}

@@ -11,6 +11,10 @@ const Infoprofile = (props) => {
         props.addPost(entervalue);
         elementAddPost.current.value = "";
     }
+    let textTemp = () => {
+        let tempValue = elementAddPost.current.value
+        props.textTemp(tempValue);
+    }
 
     let postsReadyOver = props.prII.map(
         (post) => { return <Post inner={post.inner} /> }
@@ -19,7 +23,7 @@ const Infoprofile = (props) => {
         <div className={classes.info}><p> Здесь будет профиль</p></div>
         <div className={classes.posts}>
             <div>
-                <textarea className={classes.enter} ref={elementAddPost}></textarea>
+                <textarea onChange={textTemp} className={classes.enter} ref={elementAddPost}></textarea>
                 <div><button onClick={addPost}>Отправить</button></div>
                 <div className={classes.infoprofileDiv}>{postsReadyOver}</div>
             </div>

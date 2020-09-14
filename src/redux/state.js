@@ -1,5 +1,3 @@
-import reRenderAll from './../render';
-
 let state = {
     profilePage: {
         postsReady: [
@@ -18,6 +16,7 @@ let state = {
             { inner: "Hello my brothers and sisters", id: 13 },
             { inner: "Hello my brothers and sisters", id: 14 },
         ],
+        tempPostText: "",
     },
     dialogiesPages: {
         messages: [
@@ -38,14 +37,27 @@ let state = {
         ],
     },
 }
+window.state = state;
 
-export let addPost = (message) => {
+export const addPost = (message) => {
     let newPost = {
         inner: message,
         id: state.profilePage.postsReady.length + 1,
     };
     state.profilePage.postsReady.unshift(newPost);
-    reRenderAll(state)
+    reRenderAll()
 };
+
+export const textTemp = (value) => {
+    let newCondition = value;
+    state.profilePage.tempPostText = newCondition;
+    reRenderAll()
+}
+
+let reRenderAll = () => { }
+
+export const subscribe = (observer) => {
+    reRenderAll = observer;
+}
 
 export default state;

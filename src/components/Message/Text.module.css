@@ -1,4 +1,15 @@
 .text {
-    text-align: center;
+    text-align: right;
     color:black;
+    padding-right: 10px;
+    position: relative;
+ }
+ .text:before {
+     content: "";
+     background-image: url(https://cs8.pikabu.ru/avatars/385/x385630-1836665507.png);
+     position: absolute;
+     left: 20px;
+     width: 25px;
+     height: 25px;
+     background-size: cover;
  }

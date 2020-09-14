@@ -18,7 +18,7 @@ function App(props) {
         <Sidebar />
         <div class="osnova">
           <Route path="/profile" render={() => <Profile textTemp={props.textTemp} addPost={props.addPost} prI={props.state.profilePage.postsReady} profilePhoto={props.state.profilePage.profilePhoto} />} />
-          <Route path="/message" render={() => <Message chI={props.state.dialogiesPages} meI={props.state.dialogiesPages} />} />
+          <Route path="/message" render={() => <Message chI={props.state.dialogiesPages} meI={props.state.dialogiesPages} sendMessage={props.sendMessage} />} />
           <Route path="/music" render={() => <Music />} />
           <Route path="/gachi" render={() => <Gachi />} />
           <Route path="/stop" render={() => <Stops />} />

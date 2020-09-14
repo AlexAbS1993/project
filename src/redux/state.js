@@ -39,6 +39,14 @@ let state = {
 }
 window.state = state;
 
+export const sendMessage = (message) => {
+    let newMessage = {
+        name: message,
+    }
+    state.dialogiesPages.messages.push(newMessage);
+    reRenderAll()
+}
+
 export const addPost = (message) => {
     let newPost = {
         inner: message,

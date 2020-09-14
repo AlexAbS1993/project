@@ -4,13 +4,13 @@ import state, { subscribe } from './redux/state';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { addPost, textTemp } from './redux/state'
+import { addPost, textTemp, sendMessage } from './redux/state'
 
 
 let reRenderAll = () => {
     ReactDOM.render(
         <React.StrictMode>
-            <App state={state} addPost={addPost} textTemp={textTemp} />
+            <App state={state} addPost={addPost} textTemp={textTemp} sendMessage={sendMessage} />
         </React.StrictMode>,
         document.getElementById('root')
     );

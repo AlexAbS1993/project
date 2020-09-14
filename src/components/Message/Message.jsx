@@ -27,7 +27,7 @@ const Message = (props) => {
                 <div className={classes.texty}>
                     {messagesOver}
                 </div>
-                <Input />
+                <Input sendMessage={props.sendMessage} />
             </div>
         </div>
     )

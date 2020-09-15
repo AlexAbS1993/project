@@ -10,6 +10,7 @@ import Gachi from './components/Gachi/Gachi';
 import Stops from './components/Stop/Stop';
 import FriendSide from './components/FriendsSide';
 
+
 function App(props) {
   return (
     <BrowserRouter>
@@ -17,7 +18,7 @@ function App(props) {
         <Header />
         <Sidebar />
         <div class="osnova">
-          <Route path="/profile" render={() => <Profile textTemp={props.textTemp} addPost={props.addPost} prI={props.state.profilePage.postsReady} profilePhoto={props.state.profilePage.profilePhoto} />} />
+          <Route path="/profile" render={() => <Profile textTemp={props.textTemp} addPost={props.addPost} prI={props.state.profilePage} />} />
           <Route path="/message" render={() => <Message chI={props.state.dialogiesPages} meI={props.state.dialogiesPages} sendMessage={props.sendMessage} />} />
           <Route path="/music" render={() => <Music />} />
           <Route path="/gachi" render={() => <Gachi />} />

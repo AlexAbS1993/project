@@ -3,7 +3,6 @@ import Chat from './Dialogies/Chat';
 import Input from './Input';
 import classes from './Message.module.css';
 import Text from './Text';
-import { BrowserRouter, Route } from "react-router-dom";
 
 
 const Message = (props) => {

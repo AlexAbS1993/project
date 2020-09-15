@@ -1,7 +1,6 @@
 import React from 'react';
 import classes from './Infoprofile.module.css';
 import Post from './Post'
-import ProfilePhoto from './ProfilePhoto';
 
 const Infoprofile = (props) => {
     let elementAddPost = React.createRef();
@@ -9,10 +8,10 @@ const Infoprofile = (props) => {
     let addPost = () => {
         let entervalue = elementAddPost.current.value;
         props.addPost(entervalue);
-        elementAddPost.current.value = "";
+
     }
     let textTemp = () => {
-        let tempValue = elementAddPost.current.value
+        let tempValue = elementAddPost.current.value;
         props.textTemp(tempValue);
     }
 
@@ -23,7 +22,7 @@ const Infoprofile = (props) => {
         <div className={classes.info}><p> Здесь будет профиль</p></div>
         <div className={classes.posts}>
             <div>
-                <textarea onChange={textTemp} className={classes.enter} ref={elementAddPost}></textarea>
+                <textarea value={props.txI} onChange={textTemp} className={classes.enter} ref={elementAddPost} />
                 <div><button onClick={addPost}>Отправить</button></div>
                 <div className={classes.infoprofileDiv}>{postsReadyOver}</div>
             </div>

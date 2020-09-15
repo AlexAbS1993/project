@@ -10,7 +10,7 @@ const Input = (props) => {
         let entervalue = elementAddPost.current.value;
         props.dispatch({
             type: "MESSAGE-TYPE-TEMP", value: entervalue
-        })
+        });
     }
     return (
         <div className={classes.enter}>

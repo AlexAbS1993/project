@@ -6,13 +6,12 @@ const Infoprofile = (props) => {
     let elementAddPost = React.createRef();
 
     let addPost = () => {
-        let entervalue = elementAddPost.current.value;
-        props.addPost(entervalue);
+        props.dispatch({ type: "ADD-POST" });
 
     }
     let textTemp = () => {
         let tempValue = elementAddPost.current.value;
-        props.textTemp(tempValue);
+        props.dispatch({ type: "TEXT-TEMP", value: tempValue });
     }
 
     let postsReadyOver = props.prII.map(

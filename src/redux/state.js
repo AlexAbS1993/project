@@ -26,6 +26,7 @@ let store = {
                 { name: "Boy next" },
                 { name: "dungeon master" }
             ],
+            tempMess: "",
             chats: [
                 { name: "Рекс", id: 1 },
                 { name: "Соцопрос", id: 2 },
@@ -41,26 +42,34 @@ let store = {
     getState() {
         return this._state
     },
-    sendMessage() {
-        let newMessage = {
-            name: this._state.profilePage.tempPostText,
+
+    dispatch(action) {
+        if (action.type === "ADD-POST") {
+            let newPost = {
+                inner: this._state.profilePage.tempPostText,
+            };
+            this._state.profilePage.postsReady.unshift(newPost);
+            this._state.profilePage.tempPostText = "";
+            this._call(this._state)
         }
-        this._state.dialogiesPages.messages.push(newMessage);
-        this._call()
-    },
-    addPost() {
-        debugger
-        let newPost = {
-            inner: this._state.profilePage.tempPostText,
-        };
-        this._state.profilePage.postsReady.unshift(newPost);
-        this._state.profilePage.tempPostText = "";
-        this._call(this._state)
-    },
-    textTemp(value) {
-        let newCondition = value;
-        this._state.profilePage.tempPostText = newCondition;
-        this._call(this._state)
+        else if (action.type === "TEXT-TEMP") {
+            let newCondition = action.value;
+            this._state.profilePage.tempPostText = newCondition;
+            this._call(this._state)
+        }
+        else if (action.type === "SEND-MESSAGE") {
+            let newMessage = {
+                name: this._state.dialogiesPages.tempMess,
+            }
+            this._state.dialogiesPages.messages.push(newMessage);
+            this._state.dialogiesPages.tempMess = "";
+            this._call(this._state)
+        }
+        else if (action.type === "MESSAGE-TYPE-TEMP") {
+            let newCondition = action.value;
+            this._state.dialogiesPages.tempMess = newCondition;
+            this._call(this._state)
+        }
     },
     _call() { },
     subscribe(observer) {

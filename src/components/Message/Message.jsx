@@ -11,7 +11,7 @@ const Message = (props) => {
         .map((chat) => { return (<Chat name={chat.name} id={chat.id} />) }
         )
 
-    let messagesOver = props.meI.messages
+    let messagesOver = props.chI.messages
         .map((mess) => {
             return (<Text massage={mess.name} />
             )
@@ -26,7 +26,7 @@ const Message = (props) => {
                 <div className={classes.texty}>
                     {messagesOver}
                 </div>
-                <Input sendMessage={props.sendMessage} />
+                <Input dispatch={props.dispatch} tempMess={props.chI} />
             </div>
         </div>
     )

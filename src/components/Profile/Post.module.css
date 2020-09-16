@@ -7,7 +7,7 @@
     border: rgba(143, 197, 233, 0.473) 4px solid;
     box-shadow: 0 0 10px rgb(90, 75, 73);
     display: grid;
-    grid-template-columns: 1fr 10fr 1fr;
+    grid-template-columns: 1fr 12fr 1fr;
 }
 
 .thispost span {
@@ -18,6 +18,16 @@
     width: 50px;
     height: 50px;
     border-radius: 50px;
+    margin-left: 25px;
+    transition: linear .4s all;
+    position: absolute;
+}
+
+.divimg:hover>.image {
+    width: 150px;
+    height: 150px;
+    border-radius: 150px;
+    transform: translate(-120px, -50px);
 }
 
 .but {
@@ -28,4 +38,11 @@
     border: none;
     cursor: pointer;
     background-color: inherit;
+    transition: linear .4s all;
+}
+
+.but:hover {
+    font-size: 25px;
+    color:rgba(12, 171, 211, 0.788);
+    font-weight: bold;
 }

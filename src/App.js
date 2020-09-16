@@ -9,6 +9,7 @@ import Music from './components/Music/Music';
 import Gachi from './components/Gachi/Gachi';
 import Stops from './components/Stop/Stop';
 import FriendSide from './components/FriendsSide';
+import Friends from './components/Friends/Friends';
 
 
 function App(props) {
@@ -23,6 +24,7 @@ function App(props) {
           <Route path="/music" render={() => <Music />} />
           <Route path="/gachi" render={() => <Gachi />} />
           <Route path="/stop" render={() => <Stops />} />
+          <Route path="/friends" render={() => <Friends fr={props.state.friendsPage} dispatch={props.dispatch} />} />
         </div>
         <FriendSide />
       </div>

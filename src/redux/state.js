@@ -1,5 +1,6 @@
 import { dialigiesReducer } from './dialogiesPagesReducer';
 import { profileReducer } from './profilePageReducer';
+import { friendReducer } from './friendsPageReducer'
 
 let store = {
     _state: {
@@ -41,6 +42,17 @@ let store = {
                 { name: "Мой ФСБшник", id: 8 }
             ],
         },
+        friendsPage: {
+            friends: [
+                { name: "Первый" },
+                { name: "Второй" },
+                { name: "Третий" },
+                { name: "Четвертый" },
+                { name: "Пятый" },
+                { name: "Шестой" }
+            ],
+            tempTextSearch: "",
+        }
     },
     getState() {
         return this._state
@@ -52,6 +64,7 @@ let store = {
     dispatch(action) {
         this._state.profilePage = profileReducer(this._state.profilePage, action);
         this._state.dialogiesPages = dialigiesReducer(this._state.dialogiesPages, action);
+        this._state.friendsPage = friendReducer(this._state.friendsPage, action);
         this._call(this._state)
     }
 }

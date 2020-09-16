@@ -10,6 +10,12 @@
     width: 400px;
     height: 200px;
     resize: none;
+    outline: none;
+    border: none; 
+}
+.enter:focus {
+    box-shadow: 0 0 15px blue;
+    outline: none;
 }
 
 button {
@@ -18,3 +24,6 @@ button {
     margin-left: calc(50% - 50px);
 }
 
+button:focus {
+    outline:none;
+}

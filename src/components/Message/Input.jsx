@@ -1,16 +1,17 @@
 import React from 'react';
 import classes from './Input.module.css';
+import { disSendMessage, disMessageTypeTemp } from './../../redux/dialogiesPagesReducer'
 
 const Input = (props) => {
     let elementAddPost = React.createRef();
     let sendMessage = () => {
-        props.dispatch({ type: "SEND-MESSAGE" });
+        props.dispatch(disSendMessage());
     }
     let tempTypeMessage = () => {
         let entervalue = elementAddPost.current.value;
-        props.dispatch({
-            type: "MESSAGE-TYPE-TEMP", value: entervalue
-        });
+        props.dispatch(
+            disMessageTypeTemp(entervalue)
+        );
     }
     return (
         <div className={classes.enter}>

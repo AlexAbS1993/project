@@ -1,17 +1,18 @@
 import React from 'react';
 import classes from './Infoprofile.module.css';
 import Post from './Post'
+import { disAddPost, disTextTemp } from './../../redux/profilePageReducer'
 
 const Infoprofile = (props) => {
     let elementAddPost = React.createRef();
 
     let addPost = () => {
-        props.dispatch({ type: "ADD-POST" });
+        props.dispatch(disAddPost());
 
     }
     let textTemp = () => {
         let tempValue = elementAddPost.current.value;
-        props.dispatch({ type: "TEXT-TEMP", value: tempValue });
+        props.dispatch(disTextTemp(tempValue));
     }
 
     let postsReadyOver = props.prII.map(

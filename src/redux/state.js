@@ -1,3 +1,6 @@
+import { dialigiesReducer } from './dialogiesPagesReducer';
+import { profileReducer } from './profilePageReducer';
+
 let store = {
     _state: {
         profilePage: {
@@ -42,39 +45,19 @@ let store = {
     getState() {
         return this._state
     },
-
-    dispatch(action) {
-        if (action.type === "ADD-POST") {
-            let newPost = {
-                inner: this._state.profilePage.tempPostText,
-            };
-            this._state.profilePage.postsReady.unshift(newPost);
-            this._state.profilePage.tempPostText = "";
-            this._call(this._state)
-        }
-        else if (action.type === "TEXT-TEMP") {
-            let newCondition = action.value;
-            this._state.profilePage.tempPostText = newCondition;
-            this._call(this._state)
-        }
-        else if (action.type === "SEND-MESSAGE") {
-            let newMessage = {
-                name: this._state.dialogiesPages.tempMess,
-            }
-            this._state.dialogiesPages.messages.push(newMessage);
-            this._state.dialogiesPages.tempMess = "";
-            this._call(this._state)
-        }
-        else if (action.type === "MESSAGE-TYPE-TEMP") {
-            let newCondition = action.value;
-            this._state.dialogiesPages.tempMess = newCondition;
-            this._call(this._state)
-        }
-    },
     _call() { },
     subscribe(observer) {
         this._call = observer;
     },
+    dispatch(action) {
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogiesPages = dialigiesReducer(this._state.dialogiesPages, action);
+        this._call(this._state)
+    }
 }
+
+
+
+
 window.state = store.getState();
 export default store;

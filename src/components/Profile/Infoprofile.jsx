@@ -16,7 +16,7 @@ const Infoprofile = (props) => {
     }
 
     let postsReadyOver = props.prII.map(
-        (post) => { return <Post inner={post.inner} /> }
+        (post) => { return <Post inner={post.inner} id={post.id} dispatch={props.dispatch} /> }
     )
     return (<div>
         <div className={classes.info}><p> Здесь будет профиль</p></div>

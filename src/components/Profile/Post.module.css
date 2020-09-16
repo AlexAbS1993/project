@@ -7,7 +7,7 @@
     border: rgba(143, 197, 233, 0.473) 4px solid;
     box-shadow: 0 0 10px rgb(90, 75, 73);
     display: grid;
-    grid-template-columns: 1fr 10fr;
+    grid-template-columns: 1fr 10fr 1fr;
 }
 
 .thispost span {
@@ -18,4 +18,14 @@
     width: 50px;
     height: 50px;
     border-radius: 50px;
+}
+
+.but {
+    width: 25px;
+    height: 25px;
+    margin-left: 60px;
+    margin-top: -2px;
+    border: none;
+    cursor: pointer;
+    background-color: inherit;
 }

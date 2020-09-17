@@ -5,17 +5,15 @@ import { disSendMessage, disMessageTypeTemp } from './../../redux/dialogiesPages
 const Input = (props) => {
     let elementAddPost = React.createRef();
     let sendMessage = () => {
-        props.dispatch(disSendMessage());
+        props.disSendMessage();
     }
     let tempTypeMessage = () => {
         let entervalue = elementAddPost.current.value;
-        props.dispatch(
-            disMessageTypeTemp(entervalue)
-        );
+        props.disMessageTypeTemp(entervalue);
     }
     return (
         <div className={classes.enter}>
-            <div><textarea value={props.tempMess.tempMess} onChange={tempTypeMessage} className={classes.input} ref={elementAddPost}></textarea></div>
+            <div><textarea value={props.tempMess} onChange={tempTypeMessage} className={classes.input} ref={elementAddPost}></textarea></div>
             <button onClick={sendMessage}>Send</button>
         </div >
     )

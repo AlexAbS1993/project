@@ -19,8 +19,8 @@ let mapDispatchToProps = (dispatch) => {
         disAddPost: () => {
             dispatch(disAddPost())
         },
-        disDeletePost: (e) => {
-            dispatch(disDeletePost(e.target.parentElement.id))
+        disDeletePost: (tar) => {
+            dispatch(disDeletePost(tar))
         },
     }
 

@@ -20,7 +20,7 @@ const Infoprofile = (props) => {
         <div className={classes.info}><p> Здесь будет профиль</p></div>
         <div className={classes.posts}>
             <div>
-                <textarea value={props.txI} onChange={textTemp} className={classes.enter} ref={elementAddPost} />
+                <textarea value={props.profilePage.tempPostText} onChange={textTemp} className={classes.enter} ref={elementAddPost} />
                 <div><button onClick={addPost}>Отправить</button></div>
                 <div className={classes.infoprofileDiv}>{postsReadyOver}</div>
             </div>

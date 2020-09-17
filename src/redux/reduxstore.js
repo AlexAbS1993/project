@@ -10,5 +10,4 @@ let reducers = combineReducers({
     friendsPage: friendReducer,
 })
 
-
 let store = createStore(reducers);

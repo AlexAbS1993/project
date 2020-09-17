@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Profile from './components/Profile/Profile';
 import { BrowserRouter, Route } from "react-router-dom";
-import Message from './components/Message/Message';
+import { MessageContainer } from './components/Message/MessageContainer';
 import Music from './components/Music/Music';
 import Gachi from './components/Gachi/Gachi';
 import Stops from './components/Stop/Stop';
@@ -19,7 +19,7 @@ function App(props) {
       <Sidebar />
       <div class="osnova">
         <Route path="/profile" render={() => <Profile />} />
-        <Route path="/message" render={() => <Message chI={props.state.dialogiesPages} dispatch={props.dispatch} />} />
+        <Route path="/message" render={() => <MessageContainer />} />
         <Route path="/music" render={() => <Music />} />
         <Route path="/gachi" render={() => <Gachi />} />
         <Route path="/stop" render={() => <Stops />} />

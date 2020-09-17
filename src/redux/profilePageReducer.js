@@ -19,24 +19,31 @@ let initialState = {
 };
 export const profileReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_POST:
+        case ADD_POST: {
             let newPost = {
                 inner: state.tempPostText,
                 id: state.postsReady.length + 1,
             };
-            state.postsReady.unshift(newPost);
-            state.tempPostText = "";
-            return state;
-        case TEXT_TEMP:
+            let newState = { ...state };
+            newState.postsReady = [...state.postsReady];
+            newState.postsReady.unshift(newPost);
+            newState.tempPostText = "";
+            return newState;
+        }
+        case TEXT_TEMP: {
             let newCondition = action.value;
-            state.tempPostText = newCondition;
-            return state;
-        case DELETE_POST:
+            let newState = { ...state };
+            newState.tempPostText = newCondition;
+            return newState;
+        }
+        case DELETE_POST: {
+            let newState = { ...state };
+            newState.postsReady = [...state.postsReady];
             state.postsReady.forEach((element) => {
                 if (action.id == element.id) {
                     let a = element.id;
-                    state.postsReady.splice(Number(state.postsReady.length - element.id), 1);
-                    state.postsReady.forEach((e) => {
+                    newState.postsReady.splice(Number(newState.postsReady.length - element.id), 1);
+                    newState.postsReady.forEach((e) => {
                         if (e.id > a) {
                             e.id = e.id - 1;
                         }
@@ -44,7 +51,8 @@ export const profileReducer = (state = initialState, action) => {
                 }
             })
 
-            return state;
+            return newState;
+        }
         default:
             return state;
     }

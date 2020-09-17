@@ -16,23 +16,28 @@ let initialState = {
 }
 
 export const dialigiesReducer = (state = initialState, action) => {
-    if (action.type === SEND_MESSAGE) {
-        let newMessage = {
-            name: state.tempMess,
+    switch (action.type) {
+        case SEND_MESSAGE: {
+            let newMessage = {
+                name: state.tempMess,
+            }
+            let newState = { ...state };
+            newState.messages = [...state.messages];
+            newState.messages.push(newMessage);
+            newState.tempMess = "";
+            return newState;
         }
-        state.messages.push(newMessage);
-        state.tempMess = "";
-
+        case MESSAGE_TYPE_TEMP: {
+            let newCondition = action.value;
+            let newState = { ...state };
+            newState.tempMess = newCondition;
+            return newState;
+        }
+        default: return state;
     }
-    else if (action.type === MESSAGE_TYPE_TEMP) {
-        let newCondition = action.value;
-        state.tempMess = newCondition;
-
-    }
-
-
-    return state;
 }
+
+
 export const disSendMessage = () => { return { type: SEND_MESSAGE } };
 export const disMessageTypeTemp = (entervalue) => { return { type: MESSAGE_TYPE_TEMP, value: entervalue } };
 const SEND_MESSAGE = "SEND-MESSAGE";

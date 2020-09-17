@@ -23,9 +23,5 @@ let reRenderAll = (a) => {
 // Learn more about service workers: https://bit.ly/CRA-PWA
 reRenderAll();
 
-store.subscribe(() => {
-    let state = store.getState();
-    reRenderAll(state)
-});
 
 serviceWorker.unregister();

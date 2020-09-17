@@ -7,11 +7,11 @@ import Text from './Text';
 
 const Message = (props) => {
 
-    let chatsOver = props.chI.chats
+    let chatsOver = props.chats
         .map((chat) => { return (<Chat name={chat.name} id={chat.id} />) }
         )
 
-    let messagesOver = props.chI.messages
+    let messagesOver = props.messages
         .map((mess) => {
             return (<Text massage={mess.name} />
             )
@@ -26,7 +26,7 @@ const Message = (props) => {
                 <div className={classes.texty}>
                     {messagesOver}
                 </div>
-                <Input dispatch={props.dispatch} tempMess={props.chI} />
+                <Input disSendMessage={props.disSendMessage} disMessageTypeTemp={props.disMessageTypeTemp} tempMess={props.dialogiesPages.tempMess} />
             </div>
         </div>
     )

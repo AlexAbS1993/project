@@ -1,4 +1,23 @@
-export const profileReducer = (state, action) => {
+let initialState = {
+    postsReady: [
+        { inner: "What about playng Minecraft?", id: 14 },
+        { inner: "I like football", id: 13 },
+        { inner: "Whats wrong with me?", id: 12 },
+        { inner: "Hello my brothers and sisters", id: 11 },
+        { inner: "Whats wrong with me?", id: 10 },
+        { inner: "Whats wrong with me?", id: 9 },
+        { inner: "Whats wrong with me?", id: 8 },
+        { inner: "Whats wrong with me?", id: 7 },
+        { inner: "Whats wrong with me?", id: 6 },
+        { inner: "Whats wrong with me?", id: 5 },
+        { inner: "Whats wrong with me?", id: 4 },
+        { inner: "Whats wrong with me?", id: 3 },
+        { inner: "Hello my brothers and sisters", id: 2 },
+        { inner: "Hello my brothers and sisters", id: 1 },
+    ],
+    tempPostText: "",
+};
+export const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             let newPost = {

@@ -1,4 +1,16 @@
-export const friendReducer = (state, action) => {
+let initialState = {
+    friends: [
+        { name: "Первый" },
+        { name: "Второй" },
+        { name: "Третий" },
+        { name: "Четвертый" },
+        { name: "Пятый" },
+        { name: "Шестой" }
+    ],
+    tempTextSearch: "",
+}
+
+export const friendReducer = (state = initialState, action) => {
     switch (action.type) {
         case FRIEND_TYPE_TEMP:
             let newCondition = action.value;

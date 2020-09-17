@@ -1,4 +1,21 @@
-export const dialigiesReducer = (state, action) => {
+let initialState = {
+    messages: [
+        { name: "Hello" },
+    ],
+    tempMess: "",
+    chats: [
+        { name: "Рекс", id: 1 },
+        { name: "Соцопрос", id: 2 },
+        { name: "Дрель Соседа", id: 3 },
+        { name: "Спамеры", id: 4 },
+        { name: "Акции КFC", id: 5 },
+        { name: "Дальний родственник", id: 6 },
+        { name: "Стас Костюшкин", id: 7 },
+        { name: "Мой ФСБшник", id: 8 }
+    ],
+}
+
+export const dialigiesReducer = (state = initialState, action) => {
     if (action.type === SEND_MESSAGE) {
         let newMessage = {
             name: state.tempMess,

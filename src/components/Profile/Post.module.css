@@ -22,7 +22,19 @@
     transition: linear .4s all;
     position: absolute;
 }
-
+@media screen and (max-width: 1450px){
+    .image {
+        margin-left: 0px;
+    }
+    .thispost span {
+        padding-left: 50px
+    }
+}
+@media screen and (max-width: 760px){
+    .thispost {
+        height: 100px;
+    }
+}
 .divimg:hover>.image {
     width: 150px;
     height: 150px;

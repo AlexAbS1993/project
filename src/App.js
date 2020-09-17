@@ -14,21 +14,19 @@ import Friends from './components/Friends/Friends';
 
 function App(props) {
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Header />
-        <Sidebar />
-        <div class="osnova">
-          <Route path="/profile" render={() => <Profile dispatch={props.dispatch} prI={props.state.profilePage} />} />
-          <Route path="/message" render={() => <Message chI={props.state.dialogiesPages} dispatch={props.dispatch} />} />
-          <Route path="/music" render={() => <Music />} />
-          <Route path="/gachi" render={() => <Gachi />} />
-          <Route path="/stop" render={() => <Stops />} />
-          <Route path="/friends" render={() => <Friends fr={props.state.friendsPage} dispatch={props.dispatch} />} />
-        </div>
-        <FriendSide />
+    <div className="App">
+      <Header />
+      <Sidebar />
+      <div class="osnova">
+        <Route path="/profile" render={() => <Profile />} />
+        <Route path="/message" render={() => <Message chI={props.state.dialogiesPages} dispatch={props.dispatch} />} />
+        <Route path="/music" render={() => <Music />} />
+        <Route path="/gachi" render={() => <Gachi />} />
+        <Route path="/stop" render={() => <Stops />} />
+        <Route path="/friends" render={() => <Friends fr={props.state.friendsPage} dispatch={props.dispatch} />} />
       </div>
-    </BrowserRouter>
+      <FriendSide />
+    </div>
   );
 }
 

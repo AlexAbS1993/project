@@ -1,22 +1,30 @@
 import React from 'react';
-import classes from './Friends.module.css';
-import { distempTextSearch } from './../../redux/friendsPageReducer'
+import { FriendsList } from './FriendsList';
+import classes from './FriendsInner.module.css'
 
 const Friends = (props) => {
-    let friendsOver = props.fr.friends.map((el) => { return (<div>{el.name}</div>) })
-    let friendsSearch = (e) => {
-        let val = e.target.value;
-        // props.dispatch(disFriendsSearch(val));
+    let friendsOver = props.friends
+        .map((el) => {
+            return (<FriendsList name={el.name} />)
+        });
+    let slideRight = () => {
+        let pageNumber = props.pageNumber + 1;
+        return (props.onButtonClickRight(pageNumber))
+    };
+
+    let slideLeft = () => {
+        if (props.pageNumber == 1) {
+            return (props.onButtonClickLeft())
+        }
+        else {
+            let pageNumber = props.pageNumber - 1;
+            return (props.onButtonClickLeft(pageNumber))
+        }
     }
-    let tempTextSearch = (e) => {
-        let val = e.target.value;
-        props.dispatch(distempTextSearch(val));
-    }
-    return (
-        <div className={classes.friendwindow}>
-            <div className={classes.inputdiv}><span> Поиск друга: </span> <input value={props.fr.tempTextSearch} onChange={friendsSearch, tempTextSearch} className={classes.input}></input></div>
-            {friendsOver}
-        </div>
+    return (<div>
+        <span className={classes.numberOfPage}>Это самая {props.pageNumber}-я страничка</span><div className={classes.buttons}><button onClick={slideLeft}>Left</button><button onClick={slideRight}>Right</button></div>
+        <div className={classes.div}>{friendsOver}</div>
+    </div>
     )
 }
 

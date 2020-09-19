@@ -6,7 +6,6 @@ import Text from './Text';
 
 
 const Message = (props) => {
-
     let chatsOver = props.chats
         .map((chat) => { return (<Chat name={chat.name} id={chat.id} />) }
         )

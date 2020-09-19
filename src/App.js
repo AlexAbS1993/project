@@ -9,10 +9,10 @@ import Music from './components/Music/Music';
 import Gachi from './components/Gachi/Gachi';
 import Stops from './components/Stop/Stop';
 import FriendSide from './components/FriendsSide';
-import Friends from './components/Friends/Friends';
+import { FriendsContainer } from './components/Friends/FriendsContainer';
 
 
-function App(props) {
+function App() {
   return (
     <div className="App">
       <Header />
@@ -23,7 +23,7 @@ function App(props) {
         <Route path="/music" render={() => <Music />} />
         <Route path="/gachi" render={() => <Gachi />} />
         <Route path="/stop" render={() => <Stops />} />
-        <Route path="/friends" render={() => <Friends fr={props.state.friendsPage} dispatch={props.dispatch} />} />
+        <Route path="/friends" render={() => <FriendsContainer />} />
       </div>
       <FriendSide />
     </div>

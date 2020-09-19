@@ -1,22 +1,25 @@
 .friendwindow {
+    height: 150px;
     width: 100%;
-    height: 50px;
-    line-height: 45px;
-    font-size: 14px;
-    text-align: left;
-    margin-left: 15px;
-}
-.input {
-    margin-left: 20px;
-    margin-top: 20px;
-    width: 300px;
-}
-.inputdiv span {
-    text-align: right;
-    margin-top: 10px;
+    line-height: 25px;
     font-size: 20px;
-}
-.inputdiv {
+    text-align: left;
     display: grid;
-    grid-template-columns: 1fr 10fr;
+    grid-template-columns: 2fr 10fr;
+}
+.profileimg img {
+    height: 150px;
+    border-radius: 360px;
+}
+
+.profileimg {
+    text-align: center;
+}
+
+.friendwindow h3 {
+    padding-left: 15px;
+}
+
+.friendwindow h3:hover {
+    color: red;
 }

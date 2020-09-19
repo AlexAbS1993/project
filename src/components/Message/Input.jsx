@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from './Input.module.css';
-import { disSendMessage, disMessageTypeTemp } from './../../redux/dialogiesPagesReducer'
 
 const Input = (props) => {
     let elementAddPost = React.createRef();

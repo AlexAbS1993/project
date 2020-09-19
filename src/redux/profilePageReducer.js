@@ -20,14 +20,21 @@ let initialState = {
 export const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
+            if (state.tempPostText.length < 1) {
+                return state
+            }
             let newPost = {
                 inner: state.tempPostText,
                 id: state.postsReady.length + 1,
             };
-            let newState = { ...state };
-            newState.postsReady = [...state.postsReady];
-            newState.postsReady.unshift(newPost);
-            newState.tempPostText = "";
+            let newState = {
+                ...state,
+                tempPostText: "",
+                postsReady: [newPost, ...state.postsReady]
+            };
+            // newState.postsReady = [...state.postsReady];
+            // newState.postsReady.unshift(newPost);
+            //newState.tempPostText = "";
             return newState;
         }
         case TEXT_TEMP: {

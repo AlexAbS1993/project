@@ -21,10 +21,11 @@ export const dialigiesReducer = (state = initialState, action) => {
             let newMessage = {
                 name: state.tempMess,
             }
-            let newState = { ...state };
-            newState.messages = [...state.messages];
-            newState.messages.push(newMessage);
-            newState.tempMess = "";
+            let newState = {
+                ...state,
+                tempMess: "",
+                messages: [...state.messages, newMessage]
+            };
             return newState;
         }
         case MESSAGE_TYPE_TEMP: {

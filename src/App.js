@@ -18,7 +18,7 @@ function App() {
       <Header />
       <Sidebar />
       <div class="osnova">
-        <Route path="/profile" render={() => <Profile />} />
+        <Route path="/profile/:userId?" render={() => <Profile />} />
         <Route path="/message" render={() => <MessageContainer />} />
         <Route path="/music" render={() => <Music />} />
         <Route path="/gachi" render={() => <Gachi />} />

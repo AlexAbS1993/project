@@ -1,4 +1,5 @@
 let initialState = {
+    profile: null,
     postsReady: [
         { inner: "What about playng Minecraft?", id: 14 },
         { inner: "I like football", id: 13 },
@@ -60,6 +61,10 @@ export const profileReducer = (state = initialState, action) => {
 
             return newState;
         }
+        case SET_USER: {
+            let newState = { ...state, profile: action.data };
+            return newState;
+        }
         default:
             return state;
     }
@@ -67,7 +72,8 @@ export const profileReducer = (state = initialState, action) => {
 export const disAddPost = () => { return { type: ADD_POST } };
 export const disTextTemp = (tempValue) => { return { type: TEXT_TEMP, value: tempValue } };
 export const disDeletePost = (value) => { return { type: DELETE_POST, id: value } };
-
+export const disSetUser = (data) => { return { type: SET_USER, data: data } }
 const ADD_POST = "ADD-POST";
 const TEXT_TEMP = "TEXT-TEMP";
 const DELETE_POST = "DELETE-POST";
+const SET_USER = "SET_USER";

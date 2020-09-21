@@ -1,11 +1,11 @@
 .friendwindow {
-    height: 150px;
-    width: 100%;
+    
     line-height: 25px;
     font-size: 20px;
     text-align: left;
     display: grid;
     grid-template-columns: 2fr 10fr;
+    text-decoration: none;
 }
 .profileimg img {
     height: 150px;
@@ -14,6 +14,7 @@
 
 .profileimg {
     text-align: center;
+    grid-column: 1/3;
 }
 
 .friendwindow h3 {
@@ -22,4 +23,24 @@
 
 .friendwindow h3:hover {
     color: red;
+}
+.but button {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    outline: none;
+    height: 30px;
+    border: none;
+    background-color: rgb(34, 140, 226);
+    color: white;
+    cursor: pointer;
+    transition: linear .2s all;
+}
+.but button:hover {
+    transform: scale(1.2);
+}
+.but {
+    margin-top: -10px;
+}
+a {
+    text-decoration: none;
 }

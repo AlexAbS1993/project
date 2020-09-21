@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './Infoprofile.module.css';
 import Post from './Post'
+import ProDetail from './ProDetail';
 
 const Infoprofile = (props) => {
     let elementAddPost = React.createRef();
@@ -17,7 +18,7 @@ const Infoprofile = (props) => {
         (post) => { return <Post inner={post.inner} id={post.id} disDeletePost={props.disDeletePost} /> }
     )
     return (<div>
-        <div className={classes.info}><p> Здесь будет профиль</p></div>
+        <ProDetail profile={props.profile} />
         <div className={classes.posts}>
             <div>
                 <textarea value={props.profilePage.tempPostText} onChange={textTemp} className={classes.enter} ref={elementAddPost} />

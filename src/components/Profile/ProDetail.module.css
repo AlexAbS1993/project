@@ -1,0 +1,42 @@
+.profile {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    gap: 10px;
+}
+
+.profilephotodiv {
+    height: 300px;
+}
+.profilephoto {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    border: 4px solid rgba(109, 109, 165, 0.418);
+}
+.info {
+    padding-left: 20px;
+    background-color: rgba(0, 128, 128, 0.28);
+    padding-top: 10px;
+    
+}
+
+.pI {
+    margin-top: -5px;
+}
+
+.hI {
+    margin-bottom: 0px;
+}
+@media screen and (max-width: 984px){
+    .profilephoto {
+        height: 200px;
+        width: 150%;
+    }
+}
+.pII {
+    text-align: center;
+    padding-top: 2px;
+    margin-top: 2px;
+}

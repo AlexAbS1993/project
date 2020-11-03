@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import classes from './Friends.module.css';
 import * as axios from 'axios';
+import { usersAPI } from '../../api/api';
 
 export const FriendsList = (props) => {
     let follow = (id) => {
@@ -21,37 +22,22 @@ export const FriendsList = (props) => {
                 <p>Идентификатор пользователя: {props.id}</p>
                 <p>{props.followed ? "Вы подписаны на этого пользователя" : "Вы не подписаны на этого пользователя"}</p></div>
             <div className={classes.but}>
-
                 {props.followed ? <button onClick={
                     () => {
-                        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, {
-                            withCredentials: true,
-                            headers: {
-                                "API-KEY": "1b77b1ed-89d2-4953-bbf1-c020f9f54fe5"
+                        usersAPI.unFollowUser(props.id).then(data => {
+                            if (data.resultCode == 0) {
+                                unfollow(props.id)
                             }
                         })
-                            .then(response => {
-                                if (response.data.resultCode == 0) {
-                                    unfollow(props.id)
-                                }
-                            })
                     }
                 }
-
                 >Отписаться</button> : <button onClick={
-                    () => {
-                        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, {}, {
-                            withCredentials: true,
-                            headers: {
-                                "API-KEY": "1b77b1ed-89d2-4953-bbf1-c020f9f54fe5"
-                            }
-                        })
-                            .then(response => {
-                                if (response.data.resultCode == 0) {
-                                    follow(props.id)
-                                }
-                            })
-                    }}
+                    () => usersAPI.followUser(props.id).then(data => {
+                        if (data.resultCode == 0) {
+                            follow(props.id)
+                        }
+                    })
+                }
                 >Подписаться</button>}
             </div>
         </div >

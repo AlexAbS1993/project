@@ -1,9 +1,8 @@
 import React from 'react';
-import { disAddPost, disTextTemp, disSetUser } from './../../redux/profilePageReducer'
+import { disAddPost, disTextTemp, getStatusThunk, updateStatusThunk, setUserThunk, disEnlarge, disReduce } from './../../redux/profilePageReducer'
 import Infoprofile from "./Infoprofile";
 import { disDeletePost } from './../../redux/profilePageReducer';
 import { connect } from 'react-redux';
-import * as axios from 'axios';
 import { withRouter } from 'react-router-dom';
 
 class InfoprofileAPI extends React.Component {
@@ -12,14 +11,19 @@ class InfoprofileAPI extends React.Component {
         if (!userId) {
             userId = 11571;
         }
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
-            .then(response => {
-                this.props.setUser(response.data)
-            })
+        this.props.setUserThunk(userId);
+        this.props.getStatusThunk(userId);
     }
+    enlargeEvent() {
+        this.props.enlargeEvent();
+    }
+    reduceEvent() {
+        this.props.reduceEvent()
+    }
+
     render() {
         return (
-            <Infoprofile profile={this.props.profilePage.profile} profilePage={this.props.profilePage} disTextTemp={this.props.disTextTemp} disAddPost={this.props.disAddPost} disDeletePost={this.props.disDeletePost} />
+            <Infoprofile getStatus={this.props.getStatusThunk} updateStatus={this.props.updateStatusThunk} status={this.props.profilePage.status} isLargePhoto={this.props.profilePage.isLargePhoto} reduceEvent={this.props.reduceEvent} enlargeEvent={this.props.enlargeEvent} profile={this.props.profilePage.profile} profilePage={this.props.profilePage} disTextTemp={this.props.disTextTemp} disAddPost={this.props.disAddPost} disDeletePost={this.props.disDeletePost} />
         )
     }
 }
@@ -27,6 +31,7 @@ class InfoprofileAPI extends React.Component {
 let mapStateToProps = (state) => {
     return {
         profilePage: state.profilePage,
+        auth: state.auth,
     }
 
 }
@@ -35,15 +40,17 @@ let mapDispatchToProps = (dispatch) => {
         disTextTemp: (tempValue) => {
             dispatch(disTextTemp(tempValue))
         },
-        disAddPost: () => {
-            dispatch(disAddPost())
+        disAddPost: (values) => {
+            dispatch(disAddPost(values))
         },
         disDeletePost: (tar) => {
             dispatch(disDeletePost(tar))
         },
-        setUser: (data) => {
-            dispatch(disSetUser(data))
-        }
+        setUserThunk: (id) => { dispatch(setUserThunk(id)) },
+        enlargeEvent: () => { dispatch(disEnlarge()) },
+        reduceEvent: () => { dispatch(disReduce()) },
+        getStatusThunk: (id) => { dispatch(getStatusThunk(id)) },
+        updateStatusThunk: (status) => { dispatch(updateStatusThunk(status)) }
     }
 
 }

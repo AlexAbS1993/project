@@ -1,3 +1,5 @@
+import { usersAPI } from "../api/api";
+
 let initialState = {
     friends: [],
     pageNumber: 1,
@@ -131,3 +133,38 @@ let LOADING = { type: "LOADING" };
 let FOLLOW = { type: "FOLLOW" };
 let UNFOLLOW = { type: "UNFOLLOW" };
 let ISACTIVE = { type: "ISACTIVE" };
+
+export const showFriendsThunk = () => {
+    return ((dispatch) => {
+        // pageNumber = 1;
+        dispatch(disLoading(true));
+        usersAPI.getFriends().then(data => {
+            console.log(data)
+            dispatch(disLoading(false));
+            dispatch(disShowFriends(data.items));
+        })
+    })
+}
+
+export const slideRight = (pageNumber) => {
+    return (dispatch) => {
+        dispatch(disSlideRight());
+        dispatch(disIsActive(false));
+        dispatch(disLoading(true));
+        usersAPI.slide(pageNumber).then(data => {
+            dispatch(disLoading(false));
+            dispatch(disIsActive(true));
+            dispatch(disShowFriends(data.items));
+        })
+    }
+}
+export const slideLeft = (pageNumber) => {
+    return (dispatch) => {
+        dispatch(disSlideLeft());
+        dispatch(disLoading(true));
+        usersAPI.slide(pageNumber).then(data => {
+            dispatch(disLoading(false));
+            dispatch(disShowFriends(data.items));
+        })
+    }
+}

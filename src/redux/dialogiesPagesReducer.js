@@ -2,7 +2,6 @@ let initialState = {
     messages: [
         { name: "Hello" },
     ],
-    tempMess: "",
     chats: [
         { name: "Рекс", id: 1 },
         { name: "Соцопрос", id: 2 },
@@ -19,19 +18,12 @@ export const dialigiesReducer = (state = initialState, action) => {
     switch (action.type) {
         case SEND_MESSAGE: {
             let newMessage = {
-                name: state.tempMess,
+                name: action.values,
             }
             let newState = {
                 ...state,
-                tempMess: "",
                 messages: [...state.messages, newMessage]
             };
-            return newState;
-        }
-        case MESSAGE_TYPE_TEMP: {
-            let newCondition = action.value;
-            let newState = { ...state };
-            newState.tempMess = newCondition;
             return newState;
         }
         default: return state;
@@ -39,7 +31,5 @@ export const dialigiesReducer = (state = initialState, action) => {
 }
 
 
-export const disSendMessage = () => { return { type: SEND_MESSAGE } };
-export const disMessageTypeTemp = (entervalue) => { return { type: MESSAGE_TYPE_TEMP, value: entervalue } };
+export const disSendMessage = (values) => { return { type: SEND_MESSAGE, values: values } };
 const SEND_MESSAGE = "SEND-MESSAGE";
-const MESSAGE_TYPE_TEMP = "MESSAGE-TYPE-TEMP";

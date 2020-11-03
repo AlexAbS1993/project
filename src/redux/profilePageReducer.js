@@ -1,36 +1,29 @@
+import { usersAPI } from "../api/api";
+
 let initialState = {
     profile: null,
     postsReady: [
-        { inner: "What about playng Minecraft?", id: 14 },
-        { inner: "I like football", id: 13 },
-        { inner: "Whats wrong with me?", id: 12 },
-        { inner: "Hello my brothers and sisters", id: 11 },
-        { inner: "Whats wrong with me?", id: 10 },
-        { inner: "Whats wrong with me?", id: 9 },
-        { inner: "Whats wrong with me?", id: 8 },
-        { inner: "Whats wrong with me?", id: 7 },
-        { inner: "Whats wrong with me?", id: 6 },
-        { inner: "Whats wrong with me?", id: 5 },
-        { inner: "Whats wrong with me?", id: 4 },
-        { inner: "Whats wrong with me?", id: 3 },
-        { inner: "Hello my brothers and sisters", id: 2 },
+        { inner: "What about playng Minecraft?", id: 5 },
+        { inner: "I like football", id: 4 },
+        { inner: "Hello my brothers and sisters", id: 3 },
+        { inner: "Whats wrong with me?", id: 2 },
         { inner: "Hello my brothers and sisters", id: 1 },
     ],
-    tempPostText: "",
+    isLargePhoto: false,
+    status: "",
 };
 export const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
-            if (state.tempPostText.length < 1) {
+            if (action.values.length < 1) {
                 return state
             }
             let newPost = {
-                inner: state.tempPostText,
+                inner: action.values,
                 id: state.postsReady.length + 1,
             };
             let newState = {
                 ...state,
-                tempPostText: "",
                 postsReady: [newPost, ...state.postsReady]
             };
             // newState.postsReady = [...state.postsReady];
@@ -65,15 +58,60 @@ export const profileReducer = (state = initialState, action) => {
             let newState = { ...state, profile: action.data };
             return newState;
         }
+        case ENLARGE: {
+            let newState = { ...state };
+            newState.isLargePhoto = true;
+            return newState;
+        }
+        case REDUCE: {
+            let newState = { ...state };
+            newState.isLargePhoto = false;
+            return newState;
+        }
+        case GET_STATUS: {
+            return {
+                ...state,
+                status: action.data
+            }
+        }
         default:
             return state;
     }
 }
-export const disAddPost = () => { return { type: ADD_POST } };
+export const disAddPost = (values) => { return { type: ADD_POST, values: values } };
 export const disTextTemp = (tempValue) => { return { type: TEXT_TEMP, value: tempValue } };
 export const disDeletePost = (value) => { return { type: DELETE_POST, id: value } };
-export const disSetUser = (data) => { return { type: SET_USER, data: data } }
+export const disSetUser = (data) => { return { type: SET_USER, data: data } };
+export const disEnlarge = () => { return { type: ENLARGE } };
+export const disReduce = () => { return { type: REDUCE } };
+export const disGetStatus = (data) => { return { type: GET_STATUS, data } }
+
+
 const ADD_POST = "ADD-POST";
 const TEXT_TEMP = "TEXT-TEMP";
 const DELETE_POST = "DELETE-POST";
 const SET_USER = "SET_USER";
+const ENLARGE = "ENLARGE";
+const REDUCE = "REDUCE";
+const GET_STATUS = "GET_STATUS";
+
+export const setUserThunk = (id) => {
+    return ((dispatch) => {
+        usersAPI.setUser(id).then(data => { dispatch(disSetUser(data)) })
+    })
+}
+
+export const getStatusThunk = (id) => {
+    return ((dispatch) => {
+        usersAPI.statusGet(id).then(response => {
+            dispatch(disGetStatus(response.data))
+        })
+    })
+}
+export const updateStatusThunk = (status) => {
+    return ((dispatch) => {
+        usersAPI.statusSet(status).then(response => {
+            if (response.data.resultCode == 0) { dispatch(disGetStatus(status)) }
+        })
+    })
+}

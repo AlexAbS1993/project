@@ -3,36 +3,20 @@ import { connect } from 'react-redux';
 import Friends from './Friends';
 import * as axios from 'axios';
 import { disFollowed, disIsActive, disShowFriends, disUnfollowed } from './../../redux/friendsPageReducer'
-import { disSlideLeft, disSlideRight, disSetupPage, disLoading } from './../../redux/friendsPageReducer';
-import { getFriends, slide } from '../../api/api';
+import { disSlideLeft, disSlideRight, disSetupPage, disLoading, showFriendsThunk, slideRight, slideLeft } from './../../redux/friendsPageReducer';
+import { usersAPI } from '../../api/api';
 
 
 class FriendsAPI extends React.Component {
     componentDidMount() {
         this.props.friendsPage.pageNumber = 1;
-        this.props.loading(true);
-        getFriends().then(response => {
-            this.props.loading(false);
-            this.props.showFriends(response.data.items);
-        })
+        this.props.showFriendsThunk();
     }
     onButtonClickRight = (pageNumber) => {
-        this.props.slideRight();
-        this.props.isactive(false);
-        this.props.loading(true);
-        slide(pageNumber).then(response => {
-            this.props.loading(false);
-            this.props.isactive(true);
-            this.props.showFriends(response.data.items)
-        })
+        this.props.slideRight(pageNumber);
     }
     onButtonClickLeft = (pageNumber = 1) => {
-        this.props.slideLeft();
-        this.props.loading(true);
-        slide(pageNumber).then(response => {
-            this.props.loading(false);
-            this.props.showFriends(response.data.items)
-        })
+        this.props.slideLeft(pageNumber);
     }
     render() {
         return (<div>
@@ -65,7 +49,10 @@ let mapStateToDispatch = (dispatch) => {
             loading: (value) => { dispatch(disLoading(value)) },
             follow: (id) => { dispatch(disFollowed(id)) },
             unfollow: (id) => { dispatch(disUnfollowed(id)) },
-            isactive: (value) => { dispatch(disIsActive(value)) }
+            isactive: (value) => { dispatch(disIsActive(value)) },
+            showFriendsThunk: (pageNumber) => { dispatch(showFriendsThunk(pageNumber)) },
+            slideLeft: (pageNumber) => { dispatch(slideLeft(pageNumber)) },
+            slideRight: (pageNumber) => { dispatch(slideRight(pageNumber)) }
         }
     )
 }

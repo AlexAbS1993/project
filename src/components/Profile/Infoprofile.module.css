@@ -5,7 +5,7 @@
 .posts {
     width: 100%;
 }
-.enter {
+.enter textarea{
     margin-left: calc(50% - 200px);
     width: 400px;
     height: 200px;
@@ -26,4 +26,8 @@ button {
 
 button:focus {
     outline:none;
+}
+.test {
+    width: 400px;
+    height: 200px;
 }

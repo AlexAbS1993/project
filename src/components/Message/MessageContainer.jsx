@@ -12,11 +12,8 @@ let mapStateToProps = (state) => {
 }
 let mapDispatchToProps = (dispatch) => {
     return {
-        disSendMessage: () => {
-            dispatch(disSendMessage())
-        },
-        disMessageTypeTemp: (entervalue) => {
-            dispatch(disMessageTypeTemp(entervalue))
+        disSendMessage: (values) => {
+            dispatch(disSendMessage(values))
         }
     }
 }
